@@ -1,22 +1,30 @@
+// Function to read a cookie's value
 function getCookie(name) {
-    let cookieArray = document.cookie.split(';');
-    for (let i = 0; i < cookieArray.length; i++) {
-        let cookiePair = cookieArray[i].split('=');
-        if (name === cookiePair[0].trim()) {
-            return decodeURIComponent(cookiePair[1]);
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
         }
     }
-    return null;
+    return cookieValue;
 }
 
-function checkIP() {
-    const userIP = getCookie('instant-challengev1');
-    const expectedIP = 'EXPECTED_IP_VALUE'; // This should be set by your server when setting the cookie
+// Function to perform the check and redirect
+function checkAndRedirect() {
+    const expectedValue = "YourExpectedValueHere"; // Replace with the value you expect
+    const actualValue = getCookie('instant-challengev1');
 
-    if (userIP !== expectedIP) {
+    if (actualValue !== expectedValue) {
+        // Redirect if the values do not match
         window.location.href = '/x444instant-blockedx444';
     }
 }
 
-// Run the check
-checkIP();
+// Wait for 6 seconds before performing the check
+setTimeout(checkAndRedirect, 6000);
