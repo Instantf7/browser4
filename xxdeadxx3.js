@@ -27,4 +27,4 @@ function checkAndRedirect() {
 }
 
 // Wait for 6 seconds before performing the check
-setTimeout(checkAndRedirect, 6000);
+setTimeout(checkAndRedirect, 7000);
