@@ -1,4 +1,4 @@
-// Function to handle spamming
+
         (function() {
             const maxLoads = 6;
             const timeSpan = 1000; // 1 second in milliseconds
