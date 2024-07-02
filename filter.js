@@ -1,6 +1,6 @@
 // Function to handle spamming
         (function() {
-            const maxLoads = 14;
+            const maxLoads = 6;
             const timeSpan = 1000; // 1 second in milliseconds
             const storageKey = 'pageLoadTimestamps';
             const now = Date.now();
